@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>TTR 20-2-004</title>
+ {% load static %}
+
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="stylesheet" href=" {% static 'bower_components/bootstrap/dist/css/bootstrap.min.css'%}">
+        <link rel="stylesheet" href=" {% static 'bower_components/font-awesome/css/font-awesome.min.css'%}">
+        <link rel="stylesheet" href=" {% static 'bower_components/Ionicons/css/ionicons.min.css'%}">
+        <link rel="stylesheet" href=" {% static 'bower_components/jvectormap/jquery-jvectormap.css'%}">
+        <link rel="stylesheet" href=" {% static 'dist/css/AdminLTE.min.css'%}">
+        <link rel="stylesheet" href=" {% static 'dist/css/skins/_all-skins.min.css'%}">
+        <link rel="stylesheet" href=" {% static 'dist/js/pages/dashboard.js'%}">
+        <link rel="stylesheet" href=" {% static 'dist/js/pages/dashboard2.js'%}">
+        <link rel="stylesheet" href=" https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    
+    <link href="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<script src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="//cdn.bootcss.com/moment.js/2.17.1/moment.min.js"></script>
+    </head>
+    <body class="hold-transition skin-blue sidebar-mini">
+        <div class="wrapper">
+            <header class="main-header">
+                <a href="http://www.daimler.com.mx/" class="logo">
+                    <span class="logo-mini"><b>TTR</b></span>
+                    <span class="logo-lg"><b>Monitor </b>Campañas</span>
+                </a>
+                <nav class="navbar navbar-static-top">
+                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="{% static 'dist/img/avatar04.png' %}" class="user-image" alt="User Image">
+                                    <span class="hidden-xs">Distribuidor 51</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="user-header">
+                                        <img src="{% static 'dist/img/avatar04.png' %}" class="img-circle" alt="User Image">
+                                        <p>
+                                            Distribuidor 51
+                                            <small>Taller</small>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <aside class="main-sidebar">
+                <section class="sidebar">
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="{% static 'dist/img/avatar04.png' %}" class="img-circle" alt="User Image">
+                        </div>
+                        <div class="pull-left info">
+                            <p>Distribuidor 51</p>
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+                    <ul class="sidebar-menu" data-widget="tree">
+                        <li class="header">MENÚ PRINCIPAL</li>                        
+                        <li>
+                            <a href="{% url 'cliente' %}">
+                                <i class="fa fa-th"></i> <span>Campañas</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://drive.google.com/drive/folders/1wnpAyp_BNnStGFL4efg2XcEWZs7_WlSd?usp=sharing">
+                                <i class="fa fa-dashboard"></i> <span>Documentación</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/rodrigo05/TTR-MONITOR">
+                                <i class="fa fa-book"></i> <span>GitHub</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=9umZJNVwIm8&feature=youtu.be">
+                                <i class="fa fa-book"></i> <span>Video</span>
+                            </a>
+                        </li>
+                        <li class="header">Colorimetria</li>
+                        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Deleted</span></a></li>
+                        <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Open</span></a></li>
+                        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Closed</span></a></li>
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Campañas
+                        <small>WEB APP DEMO</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li class="active">Campañas</li>
+                    </ol>
+                </section>
+                <!-- Main content -->
+                <section class="content">    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Unidades con Campañas de Servicio</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="table-responsive">
+                                        <table class="table no-margin">
+                                            <thead>
+                                                <tr>
+                                                    <th>Número Vehicular</th>
+                                                    <th>Año - Modelo</th>
+                                                    <th>Grupo</th>
+                                                    <th>Status</th>
+                                                    <th>Dealer Code</th>
+                                                    <th>Customer Code</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>JP2587</td>
+                                                    <td>2018</td>
+                                                    <td>K</td>
+                                                    <td><span class="label label-success">Open</span></td>
+                                                    <td>Distribuidor 51</td>
+                                                    <td>Cliente A</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>JP2590</td>
+                                                    <td>2018</td>
+                                                    <td>K</td>
+                                                    <td><span class="label label-success">Open</span></td>
+                                                    <td>Distribuidor 51</td>
+                                                    <td>Cliente A</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>JP2606</td>
+                                                    <td>2018</td>
+                                                    <td>K</td>
+                                                    <td><span class="label label-success">Open</span></td>
+                                                    <td>Distribuidor 51</td>
+                                                    <td>Cliente A</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>JP2582</td>
+                                                    <td>2018</td>
+                                                    <td>K</td>
+                                                    <td><span class="label label-success">Open</span></td>
+                                                    <td>Distribuidor 51</td>
+                                                    <td>Cliente A</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>JP2596</td>
+                                                    <td>2018</td>
+                                                    <td>K</td>
+                                                    <td><span class="label label-success">Open</span></td>
+                                                    <td>Distribuidor 51</td>
+                                                    <td>Cliente A</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>JP2601</td>
+                                                    <td>2018</td>
+                                                    <td>K</td>
+                                                    <td><span class="label label-success">Open</span></td>
+                                                    <td>Distribuidor 51</td>
+                                                    <td>Cliente A</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>JP2588</td>
+                                                    <td>2018</td>
+                                                    <td>K</td>
+                                                    <td><span class="label label-success">Open</span></td>
+                                                    <td>Distribuidor 51</td>
+                                                    <td>Cliente A</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.table-responsive -->
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer clearfix">
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Enero</a>
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">2019</a>
+                                </div>
+                                <!-- /.box-footer -->
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                    </div>
+
+                    <!--/ Sección Dos -->                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Historial Mensual de Campañas</h3>                    
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <p class="text-center">
+                                                <strong>Campañas: Enero, 2019 - Julio, 2019</strong>
+                                            </p>                        
+                                            <div class="chart">
+                                                <!-- Sales Chart Canvas -->
+                                                <canvas id="salesChart" style="height: 180px;"></canvas>
+                                            </div>
+                                        <!-- /.chart-responsive -->
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-md-4">
+                                            <p class="text-center">
+                                                <strong>Indicador de Avance de Campañas Enero - Julio</strong>
+                                            </p>                        
+                                            <div class="progress-group">
+                                                <span class="progress-text">Total Campañas</span>
+                                                <span class="progress-number"><b>3140</b>/3311</span>                            
+                                                <div class="progress sm">
+                                                    <div class="progress-bar progress-bar-red" style="width: 94%"></div>
+                                                
+                                                </div>
+                                            </div>
+                                        <!-- /.progress-group -->
+                                        <div class="progress-group">
+                                            <span class="progress-text">Status Open</span>
+                                            <span class="progress-number"><b>2129</b>/2075</span>                        
+                                            <div class="progress sm">
+                                                <div class="progress-bar progress-bar-green" style="width: 97%"></div>
+                                            </div>
+                                        </div>
+                                        <!-- /.progress-group -->
+                                        <div class="progress-group">
+                                            <span class="progress-text">Status Closed</span>
+                                            <span class="progress-number"><b>1010</b>/1234</span>                        
+                                            <div class="progress sm">
+                                                <div class="progress-bar progress-bar-aqua" style="width: 81%"></div>
+                                            </div>
+                                        </div>
+                                        <!-- /.progress-group -->
+                                        <div class="progress-group">
+                                            <span class="progress-text">Status Deleted</span>
+                                            <span class="progress-number"><b>2</b>/2</span>                        
+                                            <div class="progress sm">
+                                                <div class="progress-bar progress-bar-yellow" style="width: 100%"></div>
+                                            </div>
+                                        </div>
+                                        <!-- /.progress-group -->
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                <!-- /.row -->
+                                </div>
+                                <!-- ./box-body -->
+                                <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-sm-3 col-xs-6">
+                                    <div class="description-block border-right">
+                                        <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 6%</span>
+                                        <h5 class="description-header">171 Campañas Nuevas</h5>
+                                        <span class="description-text">TOTAL DE CAMPAÑAS</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-xs-6">
+                                    <div class="description-block border-right">
+                                        <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
+                                        <h5 class="description-header">2 Campañas</h5>
+                                        <span class="description-text">STATUS DELETED</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-xs-6">
+                                    <div class="description-block border-right">
+                                        <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 19%</span>
+                                        <h5 class="description-header">224 Campañas Nuevas</h5>
+                                        <span class="description-text">STATUS CLOSED</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-xs-6">
+                                    <div class="description-block">
+                                        <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 3%</span>
+                                        <h5 class="description-header">54 Campañas Menos</h5>
+                                        <span class="description-text">STATUS OPEN</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                                </div>
+                                <!-- /.box-footer -->
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+
+
+
+                    <div class="row">
+                        <!-- Left col -->
+                        <div class="col-md-8">
+                        <!-- MAP & BOX PANE -->
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                            <h3 class="box-title">Mapa Ubica Clientes Clave</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body no-padding">
+                            <div class="row">
+                                <div class="col-md-9 col-sm-8">
+                                <div class="pad">
+                                    <!-- Map will be created here -->
+                                    <div id="world-map-markers" style="height: 325px;"></div>
+                                </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-3 col-sm-4">
+                                <div class="pad box-pane-right bg-green" style="min-height: 280px">
+                                    <div class="description-block margin-bottom">
+                                    <div class="sparkbar pad" data-color="#fff">90,70,90,70,75,80,70</div>
+                                    <h5 class="description-header">300</h5>
+                                    <span class="description-text">Clientes</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                    <div class="description-block margin-bottom">
+                                    <div class="sparkbar pad" data-color="#fff">90,50,90,70,61,83,63</div>
+                                    <h5 class="description-header">2129</h5>
+                                    <span class="description-text">Campañas Abiertas Enero</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                    <div class="description-block">
+                                    <div class="sparkbar pad" data-color="#fff">90,50,90,70,61,83,63</div>
+                                    <h5 class="description-header">2075</h5>
+                                    <span class="description-text">Campañas Abiertas Julio</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        </div>
+
+                        <div class="col-md-4">
+                        <!-- /Cuarta Sección -->
+                            <div class="box box-default">
+                                <div class="box-header with-border">
+                                  <h3 class="box-title">Estadisticas por grupo Enero 2019</h3>
+                            
+                                  <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                  </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                  <div class="row">
+                                    <div class="col-md-8">
+                                      <div class="chart-responsive">
+                                        <canvas id="pieChart" height="150"></canvas>
+                                      </div>
+                                      <!-- ./chart-responsive -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-4">
+                                      <ul class="chart-legend clearfix">
+                                        <li><i class="fa fa-circle-o text-red"></i> K</li>
+                                        <li><i class="fa fa-circle-o text-green"></i> F</li>
+                                        <li><i class="fa fa-circle-o text-yellow"></i> A </li>
+                                        <li><i class="fa fa-circle-o text-aqua"></i> C </li>
+                                        <li><i class="fa fa-circle-o text-light-blue"></i> B, D </li>
+                                        <li><i class="fa fa-circle-o text-gray"></i> E </li>
+                                      </ul>
+                                    </div>
+                                    <!-- /.col -->
+                                  </div>
+                                  <!-- /.row -->
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer no-padding">
+                                  <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="#">OPEN
+                                      <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 3%</span></a></li>
+                                    <li><a href="#">CLOSED <span class="pull-right text-green"><i class="fa fa-angle-up"></i> 19%</span></a>
+                                    </li>
+                                    <li><a href="#">DELETED
+                                      <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a></li>
+                                  </ul>
+                                </div>
+                                <!-- /.footer -->
+                            </div>
+                        </div>
+                    </div>
+                </section>   
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /-->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> DEMO
+            </div>
+            <strong>©2020 TTR 20-2-004 <a href="https://github.com/rodrigo05/TTR-MONITOR"> ESCOM-IPN</a>.</strong> All rights reserved.
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Create the tabs -->
+            <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+                <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <!-- Home tab content -->
+                <div class="tab-pane" id="control-sidebar-home-tab">
+                    <h3 class="control-sidebar-heading">Recent Activity</h3>
+                    <ul class="control-sidebar-menu">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+                                <div class="menu-info">
+                                    <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+                                    <p>Will be 23 on April 24th</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="menu-icon fa fa-user bg-yellow"></i>
+
+                                <div class="menu-info">
+                                    <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
+
+                                    <p>New phone +1(800)555-1234</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
+
+                                <div class="menu-info">
+                                    <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
+
+                                    <p>nora@example.com</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="menu-icon fa fa-file-code-o bg-green"></i>
+
+                                <div class="menu-info">
+                                    <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
+
+                                    <p>Execution time 5 seconds</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.control-sidebar-menu -->
+
+                    <h3 class="control-sidebar-heading">Tasks Progress</h3>
+                    <ul class="control-sidebar-menu">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Custom Template Design
+                                    <span class="label label-danger pull-right">70%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Update Resume
+                                    <span class="label label-success pull-right">95%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Laravel Integration
+                                    <span class="label label-warning pull-right">50%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Back End Framework
+                                    <span class="label label-primary pull-right">68%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.control-sidebar-menu -->
+
+                </div>
+                <!-- /.tab-pane -->
+
+                <!-- Settings tab content -->
+                <div class="tab-pane" id="control-sidebar-settings-tab">
+                    <form method="post">
+                        <h3 class="control-sidebar-heading">General Settings</h3>
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Report panel usage
+                                <input type="checkbox" class="pull-right" checked>
+                            </label>
+
+                            <p>
+                                Some information about this general settings option
+                            </p>
+                        </div>
+                        <!-- /.form-group -->
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Allow mail redirect
+                                <input type="checkbox" class="pull-right" checked>
+                            </label>
+
+                            <p>
+                                Other sets of options are available
+                            </p>
+                        </div>
+                        <!-- /.form-group -->
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Expose author name in posts
+                                <input type="checkbox" class="pull-right" checked>
+                            </label>
+
+                            <p>
+                                Allow the user to show his name in blog posts
+                            </p>
+                        </div>
+                        <!-- /.form-group -->
+
+                        <h3 class="control-sidebar-heading">Chat Settings</h3>
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Show me as online
+                                <input type="checkbox" class="pull-right" checked>
+                            </label>
+                        </div>
+                        <!-- /.form-group -->
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Turn off notifications
+                                <input type="checkbox" class="pull-right">
+                            </label>
+                        </div>
+                        <!-- /.form-group -->
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Delete chat history
+                                <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+                            </label>
+                        </div>
+                        <!-- /.form-group -->
+                    </form>
+                </div>
+                <!-- /.tab-pane -->
+            </div>
+        </aside>
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
+             immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery 3 -->
+
+</body>
+</html>
